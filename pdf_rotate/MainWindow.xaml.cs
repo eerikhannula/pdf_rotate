@@ -56,39 +56,20 @@ namespace pdf_rotate
 
         private void rotateCW_Click(object sender, RoutedEventArgs e)
         {
-            if (!String.IsNullOrEmpty(filePath))
-            {
-                PdfReader reader = new PdfReader(filePath);
-                int pagesCount = reader.NumberOfPages;
-                PdfDictionary page = reader.GetPageN(1);
-                PdfNumber rotate = page.GetAsNumber(PdfName.ROTATE);
-                page.Put(PdfName.ROTATE, new PdfNumber(90));
-                FileStream fs = new FileStream(destinationPath, FileMode.Create,
-                FileAccess.Write, FileShare.None);
-                PdfStamper stamper = new PdfStamper(reader, fs);
-                stamper.Close();
-                reader.Close();
-            }
+            Rotate(90);
         }
 
         private void rotateCCW_Click(object sender, RoutedEventArgs e)
         {
-            if (!String.IsNullOrEmpty(filePath))
-            {
-                PdfReader reader = new PdfReader(filePath);
-                int pagesCount = reader.NumberOfPages;
-                PdfDictionary page = reader.GetPageN(1);
-                PdfNumber rotate = page.GetAsNumber(PdfName.ROTATE);
-                page.Put(PdfName.ROTATE, new PdfNumber(-90));
-                FileStream fs = new FileStream(destinationPath, FileMode.Create,
-                FileAccess.Write, FileShare.None);
-                PdfStamper stamper = new PdfStamper(reader, fs);
-                stamper.Close();
-                reader.Close();
-            }
+            Rotate(-90);
         }
 
         private void flip_Click(object sender, RoutedEventArgs e)
+        {
+            Rotate(180);
+        }
+
+        private void Rotate(int degree)
         {
             if (!String.IsNullOrEmpty(filePath))
             {
@@ -96,7 +77,7 @@ namespace pdf_rotate
                 int pagesCount = reader.NumberOfPages;
                 PdfDictionary page = reader.GetPageN(1);
                 PdfNumber rotate = page.GetAsNumber(PdfName.ROTATE);
-                page.Put(PdfName.ROTATE, new PdfNumber(180));
+                page.Put(PdfName.ROTATE, new PdfNumber(degree));
                 FileStream fs = new FileStream(destinationPath, FileMode.Create,
                 FileAccess.Write, FileShare.None);
                 PdfStamper stamper = new PdfStamper(reader, fs);
