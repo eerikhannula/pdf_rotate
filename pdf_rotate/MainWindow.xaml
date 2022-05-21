@@ -1,0 +1,22 @@
+﻿<Window x:Class="pdf_rotate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pdf_rotate"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Button Content="Choose a file" Click="Button_Click"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Content="Selected file: "/>
+            <Label x:Name="fileNameLabel"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Button x:Name="rotateCW" Content="Rotate 90 degrees" Margin="10" Click="rotateCW_Click"/>
+            <Button x:Name="rotateCCW" Content="Rotate negative 90 degrees" Margin="10" Click="rotateCCW_Click"/>
+            <Button x:Name="flip" Content="Rotate 180 degrees" Margin="10" Click="flip_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
